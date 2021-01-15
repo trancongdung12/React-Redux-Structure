@@ -5,14 +5,16 @@ import {
 } from 'redux-persist-seamless-immutable';
 
 const transformerConfig = {
-  whitelistPerReducer: {},
+  whitelistPerReducer: {
+    login: 'token',
+  },
 };
 
 const reduxPersist = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: [],
+  whitelist: ['login'],
   blacklist: [],
   stateReconciler: seamlessImmutableReconciler,
   transforms: [seamlessImmutableTransformCreator(transformerConfig)],

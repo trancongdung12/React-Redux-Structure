@@ -20,8 +20,8 @@ const userLoginFailure = (error) => makeActionCreator(LoginTypes.USER_LOGIN_FAIL
 //Register
 const userRegister = (data) => makeActionCreator(LoginTypes.USER_REGISTER, { data });
 
-const userRegisterSuccess = (token) =>
-  makeActionCreator(LoginTypes.USER_REGISTER_SUCCESS, { token });
+const userRegisterSuccess = (tokened) =>
+  makeActionCreator(LoginTypes.USER_REGISTER_SUCCESS, { tokened });
 
 const userRegisterFailure = (error) =>
   makeActionCreator(LoginTypes.USER_REGISTER_FAILURE, { error });

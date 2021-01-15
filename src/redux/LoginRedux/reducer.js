@@ -26,10 +26,10 @@ export const userLoginFailure = (state, { error }) =>
 //Register
 export const userRegister = (state) => state.merge({ loadingLogin: true });
 
-export const userRegisterSuccess = (state, { token }) =>
+export const userRegisterSuccess = (state, { tokened }) =>
   state.merge({
     loadingLogin: false,
-    token: token,
+    token: tokened,
   });
 
 export const userRegisterFailure = (state, { error }) =>
@@ -41,6 +41,9 @@ const reducer = makeReducerCreator(INITIAL_STATE, {
   [LoginTypes.USER_LOGIN]: userLogin,
   [LoginTypes.USER_LOGIN_SUCCESS]: userLoginSuccess,
   [LoginTypes.USER_LOGIN_FAILURE]: userLoginFailure,
+  [LoginTypes.USER_REGISTER]: userRegister,
+  [LoginTypes.USER_REGISTER_SUCCESS]: userRegisterSuccess,
+  [LoginTypes.USER_REGISTER_FAILURE]: userRegisterFailure,
   [LoginTypes.USER_LOGOUT]: userLogout,
 });
 

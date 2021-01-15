@@ -20,10 +20,7 @@ export function* userLoginSaga({ data }) {
 export function* userRegisterSaga({ data }) {
   try {
     const response = yield call(userRegisterApi, data);
-    const newResponse = {
-      token: response.data.token,
-    };
-    yield put(LoginActions.userRegisterSuccess(newResponse));
+    yield put(LoginActions.userRegisterSuccess(response.data.token));
     yield put(startup());
   } catch (error) {
     console.log(error);
@@ -37,7 +34,7 @@ export function* userLogoutSaga() {
 const loginSagas = () => [
   takeLatest(LoginTypes.USER_LOGIN, userLoginSaga),
   takeLatest(LoginTypes.USER_LOGOUT, userLogoutSaga),
-  takeLatest(LoginTypes.USER_LOGOUT, userRegisterSaga),
+  takeLatest(LoginTypes.USER_REGISTER, userRegisterSaga),
 ];
 
 export default loginSagas();

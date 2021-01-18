@@ -20,7 +20,6 @@ const App = () => {
   const loadStore = async () => {
     return new Promise((resolve) => {
       configureStore((tempStore, persistor) => {
-        // configI18n(get(tempStore.getState(), 'app.language'));
         registerScreens(tempStore, persistor);
         resolve(tempStore, persistor);
       });

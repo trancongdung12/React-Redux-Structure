@@ -12,7 +12,8 @@ export function* startupSaga() {
     if (token) {
       NavigationUtils.startMainContent();
     } else {
-      NavigationUtils.startLoginContent();
+      // NavigationUtils.startLoginContent();
+      NavigationUtils.startProfile();
     }
   } catch (error) {
     NavigationUtils.startLoginContent();

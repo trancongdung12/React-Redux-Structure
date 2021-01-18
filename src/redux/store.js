@@ -16,7 +16,7 @@ const config = {
   includeExamples: __DEV__,
 };
 
-export default onComplete => {
+export default (onComplete) => {
   /* ------------- Redux Configuration ------------- */
 
   const middleware = [];

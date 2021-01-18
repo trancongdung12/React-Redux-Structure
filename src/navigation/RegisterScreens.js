@@ -8,12 +8,14 @@ import Login from '../screens/Login';
 import Home from '../screens/Home';
 import SignUp from '../screens/Login/SignUp';
 import ForgotPassword from '../screens/Login/ForgotPassword';
+import Profile from '../screens/User/profile';
 
 const SCREENS_WITH_REDUX = {
   Login,
   Home,
   SignUp,
   ForgotPassword,
+  Profile,
 };
 const SCREENS = {};
 
@@ -23,13 +25,12 @@ function registerScreens(store, persistor) {
 
     return (
       <Provider {...props}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={true} persistor={persistor}>
           {children}
         </PersistGate>
       </Provider>
     );
   };
-
   Object.keys(SCREENS_WITH_REDUX).map((screenName) => {
     Navigation.registerComponentWithRedux(
       screenName,

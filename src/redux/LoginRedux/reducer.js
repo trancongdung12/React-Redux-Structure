@@ -1,6 +1,6 @@
 import Immutable from 'seamless-immutable';
 import { makeReducerCreator } from '../../utils/ReduxUtils';
-import { LoginTypes } from '../LoginRedux/actions';
+import { LoginTypes, RegisterTypes } from '../LoginRedux/actions';
 
 export const INITIAL_STATE = Immutable({
   loadingLogin: false,
@@ -41,9 +41,9 @@ const reducer = makeReducerCreator(INITIAL_STATE, {
   [LoginTypes.USER_LOGIN]: userLogin,
   [LoginTypes.USER_LOGIN_SUCCESS]: userLoginSuccess,
   [LoginTypes.USER_LOGIN_FAILURE]: userLoginFailure,
-  [LoginTypes.USER_REGISTER]: userRegister,
-  [LoginTypes.USER_REGISTER_SUCCESS]: userRegisterSuccess,
-  [LoginTypes.USER_REGISTER_FAILURE]: userRegisterFailure,
+  [RegisterTypes.USER_REGISTER]: userRegister,
+  [RegisterTypes.USER_REGISTER_SUCCESS]: userRegisterSuccess,
+  [RegisterTypes.USER_REGISTER_FAILURE]: userRegisterFailure,
   [LoginTypes.USER_LOGOUT]: userLogout,
 });
 

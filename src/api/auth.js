@@ -7,3 +7,7 @@ export async function userRegisterApi(data) {
 export async function userLoginApi(data) {
   return http.post('/auth/login', data);
 }
+
+export async function userInformationApi(data) {
+  return http.post('/users/', data);
+}

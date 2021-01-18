@@ -22,6 +22,7 @@ const Login = (props) => {
 
   const isLoading = useSelector((state) => state.login.loadingLogin);
   const isError = useSelector((state) => state.login.errorLogin);
+  console.log(isError);
   const onHandleLogin = () => {
     let data = {
       email: username,
@@ -39,12 +40,12 @@ const Login = (props) => {
     <ScrollView style={styles.container}>
       <View style={styles.layoutTitle}>
         <Image style={styles.closeImage} source={mtp} />
-        <Text style={styles.title}>Đăng nhậ p </Text>
+        <Text style={styles.title}>Đăng nhập </Text>
       </View>
       <ItemInput title="Tên tài khoản*" onChange={onChangeUserName} />
       <ItemInput title="Mật khẩu*" isPass={true} onChange={onChangePassword} />
       {isLoading && <ActivityIndicator size="large" color="#25969E" />}
-      <Text style={styles.errorText}>{isError}</Text>
+      {isError && <Text style={styles.errorText}>{isError.data.message}</Text>}
       <View style={styles.layoutButton}>
         <TouchableOpacity onPress={onHandleLogin} style={styles.loginButton}>
           <Text style={styles.textLogin}>Đăng nhập</Text>

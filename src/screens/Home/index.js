@@ -10,8 +10,8 @@ const Home = (props) => {
   };
   return (
     <View style={styles.container}>
-      <Text>WelCome to Dungx App</Text>
-      <TouchableOpacity onPress={() => onLogout()}>
+      <Text>WelCome to Dung x App</Text>
+      <TouchableOpacity style={styles.button} onPress={() => onLogout()}>
         <Text>Logout</Text>
       </TouchableOpacity>
     </View>
@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    padding: 10,
+    backgroundColor: 'gray',
   },
 });
 

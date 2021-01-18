@@ -163,6 +163,27 @@ class NavigationUtils {
     });
   }
 
+  startProfile() {
+    Navigation.setRoot({
+      root: {
+        stack: {
+          children: [
+            {
+              component: {
+                name: 'profile',
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+    });
+  }
+
   push({
     screen,
     title,

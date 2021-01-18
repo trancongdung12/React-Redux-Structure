@@ -49,7 +49,6 @@ const http = {
   },
   get(url, config = {}) {
     console.log(url);
-
     return axios.get(url, config);
   },
   post(url, data = {}, config = {}) {

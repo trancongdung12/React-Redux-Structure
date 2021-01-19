@@ -7,8 +7,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Alert,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import ItemInput from '../../components/InputItemForm';
 import { Navigation } from 'react-native-navigation';
@@ -34,19 +34,19 @@ const SignUp = (props) => {
     }
   };
   const onHandleRegister = () => {
-    // if (onCheckPasswordValid()) {
-    let data = {
-      firstName: 'firstName',
-      lastName: 'lastName',
-      email: email + '@gmail.com',
-      password: 'password',
-      phone: '123456789',
-      birthDay: '2021-01-11',
-    };
-    dispatch(LoginActions.userRegister(data));
-    // } else {
-    //   Alert.alert('Error', 'Password not match');
-    // }
+    if (onCheckPasswordValid()) {
+      let data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        phone: phone,
+        birthDay: '2000-01-01',
+      };
+      dispatch(LoginActions.userRegister(data));
+    } else {
+      Alert.alert('Error', 'Password not match');
+    }
   };
   const onChangeLastName = (text) => {
     setLastName(text);

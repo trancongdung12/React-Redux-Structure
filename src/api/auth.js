@@ -8,6 +8,6 @@ export async function userLoginApi(data) {
   return http.post('/auth/login', data);
 }
 
-export async function userInformationApi(data) {
-  return http.post('/users/', data);
+export async function userInfoApi() {
+  return http.get('/users/me');
 }

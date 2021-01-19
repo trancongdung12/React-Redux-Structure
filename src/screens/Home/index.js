@@ -1,18 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import LoginActions from '../../redux/LoginRedux/actions';
-const Home = (props) => {
-  //const firstName = useSelector((state) => state.login.loginResponse.email);
+import { useDispatch } from 'react-redux';
+import userActions from '../../redux/UserRedux/actions';
+const Home = () => {
   const dispatch = useDispatch();
-  const onLogout = () => {
-    dispatch(LoginActions.userLogout());
+  const onPushProfile = () => {
+    dispatch(userActions.userInfo());
   };
   return (
     <View style={styles.container}>
-      <Text>WelCome to Dung x App</Text>
-      <TouchableOpacity style={styles.button} onPress={() => onLogout()}>
-        <Text>Logout</Text>
+      <Text>WelCome to Dung x App </Text>
+      <TouchableOpacity style={styles.button} onPress={() => onPushProfile()}>
+        <Text>Go To Profile</Text>
       </TouchableOpacity>
     </View>
   );

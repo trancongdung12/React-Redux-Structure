@@ -170,7 +170,7 @@ class NavigationUtils {
           children: [
             {
               component: {
-                name: 'profile',
+                name: 'Profile',
                 options: {
                   topBar: {
                     visible: false,

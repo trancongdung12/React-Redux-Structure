@@ -13,7 +13,7 @@ export function* startupSaga() {
       NavigationUtils.startMainContent();
     } else {
       // NavigationUtils.startLoginContent();
-      NavigationUtils.startProfile();
+      NavigationUtils.startLoginContent();
     }
   } catch (error) {
     NavigationUtils.startLoginContent();

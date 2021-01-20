@@ -1,60 +1,77 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginActions from '../../redux/LoginRedux/actions';
+import { NavigationUtils } from '../../navigation';
+import { Images, Colors } from '../../themes';
+const Item = (props) => {
+  return (
+    <TouchableOpacity style={styles.layoutItemControl} onPress={() => props.onPressItem()}>
+      <Icon name={props.name} size={25} color={Colors.blueSky} />
+      <Text style={styles.textItemControl}>{props.text}</Text>
+    </TouchableOpacity>
+  );
+};
+
 const Profile = () => {
   const dispatch = useDispatch();
+
   const onLogout = () => {
     dispatch(LoginActions.userLogout());
   };
+
+  const onChangePassword = () => {
+    NavigationUtils.push({
+      screen: 'ChangePassword',
+    });
+  };
+
+  const onPushToEditProfileScreen = () => {
+    NavigationUtils.push({
+      screen: 'EditProfile',
+    });
+  };
+
   const user = useSelector((state) => state.user.data);
   return (
     <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={() => NavigationUtils.push({ screen: 'Home' })}>
+        <Icon name="arrow-left" size={20} color="black" />
+      </TouchableWithoutFeedback>
       <View>
         <View style={styles.layoutHeader}>
           <Image
             style={styles.imageAvatar}
-            source={{ uri: 'https://scr.vn/wp-content/uploads/2020/07/avt-cute.jpg' }}
+            source={user.avatar ? { uri: user.avatar } : Images.imgDefaultAvatar}
           />
           <Text style={styles.textName}>{user.lastName + ' ' + user.firstName}</Text>
         </View>
         <View style={styles.layoutContainItem}>
           <View style={styles.layoutItem}>
-            <Icon name="phone" size={20} color="#900" />
+            <Icon name="phone" size={20} color={Colors.redBull} />
             <Text style={styles.textItem}>{user.phone}</Text>
           </View>
           <View style={styles.layoutItem}>
-            <Icon name="envelope" size={20} color="#900" />
+            <Icon name="envelope" size={20} color={Colors.redBull} />
             <Text style={styles.textItem}>{user.email}</Text>
           </View>
         </View>
         <View style={styles.layoutContainItemControl}>
-          <View style={styles.layoutItemControl}>
-            <Icon name="heart" size={25} color="#4295f5" />
-            <Text style={styles.textItemControl}>Your Favorites</Text>
-          </View>
-          <View style={styles.layoutItemControl}>
-            <Icon name="credit-card" size={25} color="#4295f5" />
-            <Text style={styles.textItemControl}>Payment</Text>
-          </View>
-          <View style={styles.layoutItemControl}>
-            <Icon name="users" size={25} color="#4295f5" />
-            <Text style={styles.textItemControl}>Tell Your Friend</Text>
-          </View>
-          <View style={styles.layoutItemControl}>
-            <Icon name="percent" size={25} color="#4295f5" />
-            <Text style={styles.textItemControl}>Promotions</Text>
-          </View>
-          <View style={styles.layoutItemControl}>
-            <Icon name="cog" size={25} color="#4295f5" />
-            <Text style={styles.textItemControl}>Settings</Text>
-          </View>
+          <Item name="heart" text="Yêu thích" />
+          <Item name="users" text="Bạn bè" />
+          <Item
+            name="edit"
+            text="Sửa thông tin tài khoản"
+            onPressItem={onPushToEditProfileScreen}
+          />
+          <Item name="lock" onPressItem={onChangePassword} text="Đổi mật khẩu" />
+          <Item name="cog" text="Cài đặt" />
         </View>
         <TouchableOpacity style={styles.layoutItemBottom} onPress={() => onLogout()}>
           <Icon name="power-off" size={25} color="red" />
-          <Text style={styles.textItemBottom}>Logout</Text>
+          <Text style={styles.textItemBottom}>Đăng xuất</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -64,13 +81,14 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
-    padding: 30,
+    paddingHorizontal: 30,
+    marginTop: 20,
   },
   layoutHeader: {
     flexDirection: 'row',
     alignSelf: 'center',
     marginBottom: 20,
+    marginTop: 20,
   },
   imageAvatar: { height: 100, width: 100, borderRadius: 50 },
   textName: {
@@ -78,7 +96,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 30,
     marginLeft: 50,
-    color: '#4245f5',
+    color: Colors.blueSky,
   },
   layoutContainItem: {
     paddingHorizontal: 30,
@@ -109,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 0,
     marginLeft: 10,
-    color: '#4295f5',
+    color: Colors.blueSky,
   },
   layoutItemBottom: {
     marginLeft: 30,

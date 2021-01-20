@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import view from '../assets/Images/view.png';
-import visibility from '../assets/Images/visibility.png';
+import { Images } from '../themes';
 
 const ItemInput = (props) => {
   const [isShowPass, setShowPass] = useState(true);
@@ -20,7 +19,10 @@ const ItemInput = (props) => {
           setShowPass(!isShowPass);
         }}
       >
-        <Image style={styles.sizeImage} source={isShowPass ? visibility : view} />
+        <Image
+          style={styles.sizeImage}
+          source={isShowPass ? Images.imgNotShowPwd : Images.imgShowPwd}
+        />
       </TouchableOpacity>
     </View>
   ) : (

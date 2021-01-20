@@ -3,11 +3,13 @@ const defaultColors = {
   blue: '#C0E9EC',
   appleBlack: '#464646',
   facebookBlue: '#4267B2',
+  blueSky: '#4295f5',
 
   // semantic color
   semanticYellow: '#FFCF5C',
   semanticGreen: '#00C48C',
   semanticRed: '#FF4A4A',
+  redBull: '#900',
 
   // neutral color
   neutralBlack: '#2F2E41',

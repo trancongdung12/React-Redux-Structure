@@ -39,7 +39,7 @@ const Login = (props) => {
     <ScrollView style={styles.container}>
       <View style={styles.layoutTitle}>
         <Image style={styles.closeImage} source={mtp} />
-        <Text style={styles.title}>Đăng nh ập </Text>
+        <Text style={styles.title}>Đăng nhập </Text>
       </View>
       <ItemInput title="Tên tài khoản*" onChange={onChangeUserName} />
       <ItemInput title="Mật khẩu*" isPass={true} onChange={onChangePassword} />

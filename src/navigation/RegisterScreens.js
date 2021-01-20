@@ -7,15 +7,17 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Login from '../screens/Login';
 import Home from '../screens/Home';
 import SignUp from '../screens/Login/SignUp';
-import ForgotPassword from '../screens/Login/ForgotPassword';
-import Profile from '../screens/User/profile';
+import ChangePassword from '../screens/Login/ChangePassword';
+import Profile from '../screens/User/Profile';
+import EditProfile from '../screens/User/EditProfile';
 
 const SCREENS_WITH_REDUX = {
   Login,
   Home,
   SignUp,
-  ForgotPassword,
+  ChangePassword,
   Profile,
+  EditProfile,
 };
 const SCREENS = {};
 

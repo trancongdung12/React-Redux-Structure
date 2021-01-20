@@ -25,7 +25,9 @@ const SignUp = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const isLoading = useSelector((state) => state.login.loadingLogin);
+  const isError = useSelector((state) => state.login.errorRegister);
   const dispatch = useDispatch();
+
   const onCheckPasswordValid = () => {
     if (password === confirmPassword) {
       return true;
@@ -33,6 +35,7 @@ const SignUp = (props) => {
       return false;
     }
   };
+
   const onHandleRegister = () => {
     if (onCheckPasswordValid()) {
       let data = {
@@ -69,6 +72,7 @@ const SignUp = (props) => {
   const onClose = () => {
     Navigation.pop(props.componentId);
   };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.layoutTitle}>
@@ -77,6 +81,7 @@ const SignUp = (props) => {
         </TouchableOpacity>
         <Text style={styles.title}>Đăng ký</Text>
       </View>
+      {isError && <Text style={styles.errorText}>{isError.data.message}</Text>}
       <ItemInput title="Họ*" value={lastName} onChange={onChangeLastName} />
       <ItemInput title="Tên*" value={firstName} onChange={onChangeFirstName} />
       <ItemInput title="Email*" value={email} onChange={onChangeEmail} />
@@ -171,5 +176,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     color: 'gray',
     textAlign: 'center',
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
